@@ -499,7 +499,7 @@
           </li>
           <li>
             <div class="contact-list-label">Contact direct</div>
-            <div class="contact-list-value"><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></div>
+            <div class="contact-list-value"><a href="mailto:contact.teamperformancecompany@gmail.com">contact.teamperformancecompany@gmail.com</a></div>
           </li>
           <li>
             <div class="contact-list-label">Délai de réponse</div>
@@ -533,7 +533,12 @@
             <p>Champs marqués d'un astérisque obligatoires. Les autres aident à préparer notre échange.</p>
           </div>
 
-          <form id="contactForm" onsubmit="handleSubmit(event)">
+          <form id="contactForm" action="https://formspree.io/f/xwvagynl" method="POST">
+
+            <!-- Hidden fields for Formspree configuration -->
+            <input type="hidden" name="_subject" value="Nouvelle demande d'entretien — TM Performance Elite">
+            <input type="hidden" name="_language" value="fr">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-row">
               <div class="form-group">
@@ -671,7 +676,7 @@
         <ul>
           <li><a href="contact.html">Contact direct</a></li>
           <li><a href="contact.html">Confidentialité</a></li>
-          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+          <li><a href="mailto:contact.teamperformancecompany@gmail.com">contact.teamperformancecompany@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -684,33 +689,51 @@
 
 <script src="assets/script.js"></script>
 <script>
-  function handleSubmit(event) {
+  // ===== Formspree submission with smooth UX =====
+  const form = document.getElementById('contactForm');
+  const submitBtn = form.querySelector('.form-submit');
+  const successBlock = document.getElementById('formSuccess');
+  const formContent = document.querySelector('.form-content');
+  const originalBtnText = submitBtn.textContent.trim();
+
+  form.addEventListener('submit', async function(event) {
     event.preventDefault();
-    // For static GitHub Pages: redirect to mailto with prefilled body
-    const form = event.target;
-    const data = new FormData(form);
-    const body = `Demande d'entretien — TM Performance Elite
 
-Prénom : ${data.get('firstname')}
-Nom : ${data.get('lastname')}
-Email : ${data.get('email')}
-Téléphone : ${data.get('phone') || '—'}
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.cursor = 'wait';
 
-Vous êtes : ${data.get('role') || '—'}
-Niveau de pratique : ${data.get('level') || '—'}
-Format envisagé : ${data.get('format') || '—'}
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
 
-Message :
-${data.get('message')}
-`;
-    const mailto = `mailto:contact@tm-performance.com?subject=${encodeURIComponent('Demande d\'entretien — ' + data.get('firstname') + ' ' + data.get('lastname'))}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-
-    // Show success after delay
-    setTimeout(() => {
-      document.getElementById('formSuccess').classList.add('show');
-    }, 800);
-  }
+      if (response.ok) {
+        // Success: show success block, hide form
+        successBlock.classList.add('show');
+        formContent.style.display = 'none';
+        // Scroll to success message
+        successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Erreur d\'envoi');
+      }
+    } catch (error) {
+      // Restore button on error
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+      submitBtn.style.opacity = '';
+      submitBtn.style.cursor = '';
+      alert('Une erreur est survenue lors de l\'envoi de votre demande. Merci de réessayer ou de nous contacter directement par email à contact.teamperformancecompany@gmail.com');
+      console.error('Form error:', error);
+    }
+  });
 </script>
 </body>
 </html>
