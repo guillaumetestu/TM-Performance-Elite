@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — TM Performance Elite</title>
+<meta name="description" content="Demander un entretien confidentiel avec TM Performance Elite. Direction de la haute performance pour footballeurs d'élite.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* PAGE HEADER */
+  .page-header {
+    padding: 200px 0 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header-watermark {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 380px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 100px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 24px 0;
+  }
+
+  .page-header-title .it {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .page-header-intro {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--text-2);
+    font-weight: 300;
+    padding-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .page-header-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* CONTACT MAIN */
+  .contact-main {
+    padding: 100px 0 140px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 100px;
+    align-items: start;
+  }
+
+  /* LEFT - INFO */
+  .contact-info {
+    position: sticky;
+    top: 120px;
+  }
+
+  .contact-info-title {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 16px 0 24px;
+  }
+
+  .contact-info-title .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-info > p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 32px;
+  }
+
+  .contact-list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    margin-top: 32px;
+  }
+
+  .contact-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-list li:last-child { border-bottom: none; }
+
+  .contact-list-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+
+  .contact-list-value {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--text-1);
+    font-weight: 400;
+  }
+
+  .contact-list-value a:hover { color: var(--gold); }
+
+  .privacy-note {
+    margin-top: 40px;
+    padding: 24px;
+    border-left: 2px solid var(--gold);
+    background: rgba(201, 161, 74, 0.04);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .privacy-note h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .privacy-note p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-2);
+  }
+
+  /* RIGHT - FORM */
+  .contact-form {
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    padding: 56px;
+    border-radius: var(--radius);
+  }
+
+  .form-header h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--text-1);
+  }
+
+  .form-header h2 .it { font-style: italic; color: var(--gold); }
+
+  .form-header p {
+    font-size: 14px;
+    color: var(--text-3);
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .form-group {
+    margin-bottom: 32px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .form-row > .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-row + .form-group { margin-top: 32px; }
+
+  .form-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 500;
+  }
+
+  .form-required {
+    color: var(--burgundy-soft);
+    margin-left: 4px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-2);
+    padding: 14px 0;
+    color: var(--text-1);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-bottom-color: var(--gold);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--text-3);
+    font-style: italic;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a14a' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 28px;
+  }
+
+  .form-select option {
+    background: var(--black-2);
+    color: var(--text-1);
+    font-family: var(--sans);
+  }
+
+  .form-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .form-checkbox {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
+  .form-checkbox input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--gold);
+    margin-top: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .form-checkbox-label {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-1);
+    line-height: 1.5;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 22px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: var(--radius);
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(201, 161, 74, 0.3);
+  }
+
+  .form-submit::after {
+    content: '→';
+    font-family: var(--serif);
+    font-size: 18px;
+    transition: transform 0.3s;
+  }
+
+  .form-submit:hover::after { transform: translateX(4px); }
+
+  .form-footer-note {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .form-success.show { display: block; }
+  .form-success.show + .form-content { display: none; }
+
+  .form-success-icon {
+    font-family: var(--serif);
+    font-size: 80px;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .form-success h3 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .form-success p {
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+    .contact-info { position: static; }
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-row > .form-group { margin-bottom: 32px; }
+    .form-row > .form-group:last-child { margin-bottom: 0; }
+  }
+
+  /* CLOSING QUOTE */
+  .closing-quote {
+    padding: 140px 0;
+    text-align: center;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+  }
+
+  .closing-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    line-height: 1.3;
+    font-style: italic;
+    color: var(--text-1);
+    max-width: 900px;
+    margin: 0 auto 32px;
+    padding: 0 var(--gutter);
+  }
+
+  .closing-quote-text .em { color: var(--gold); font-weight: 400; }
+
+  .closing-quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .closing-quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      TM Performance
+      <span class="brand-divider"></span>
+      <span class="brand-tag">Elite</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="methodologie.html">Méthodologie</a></li>
+      <li><a href="services.html">Accompagnement</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="#form" class="nav-cta">Demander un entretien</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="methodologie.html">Méthodologie</a>
+  <a href="services.html">Accompagnement</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="page-header">
+  <div class="page-header-watermark">C</div>
+  <div class="container">
+    <div class="page-header-grid">
+      <div>
+        <div class="eyebrow reveal">Contact · Entretien initial confidentiel</div>
+        <h1 class="page-header-title reveal delay-1">
+          Un seul<br>
+          <span class="it">échange</span>
+        </h1>
+      </div>
+      <div class="reveal delay-2">
+        <p class="page-header-intro">
+          La première étape est un entretien d'introduction, en toute confidentialité, pour comprendre votre situation et vérifier si notre approche correspond à vos attentes. Sans engagement.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT MAIN ============ -->
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT - INFO -->
+      <div class="contact-info">
+        <div class="eyebrow scroll-reveal">Cabinet · Direction Performance</div>
+        <h2 class="contact-info-title scroll-reveal">
+          Vos demandes,<br>
+          <span class="it">notre attention.</span>
+        </h2>
+        <p class="scroll-reveal">
+          Nous traitons chaque demande personnellement, dans les 48 heures. Toutes les informations partagées dans le formulaire restent strictement confidentielles, sans aucun tiers.
+        </p>
+
+        <ul class="contact-list scroll-reveal">
+          <li>
+            <div class="contact-list-label">Direction</div>
+            <div class="contact-list-value">Guillaume Testu</div>
+          </li>
+          <li>
+            <div class="contact-list-label">Contact direct</div>
+            <div class="contact-list-value"><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></div>
+          </li>
+          <li>
+            <div class="contact-list-label">Délai de réponse</div>
+            <div class="contact-list-value italic">Sous 48 heures ouvrées</div>
+          </li>
+          <li>
+            <div class="contact-list-label">Présentiel possible</div>
+            <div class="contact-list-value italic">France &amp; Europe</div>
+          </li>
+        </ul>
+
+        <div class="privacy-note scroll-reveal">
+          <h4>Confidentialité absolue</h4>
+          <p>
+            Toutes les données partagées sont traitées par Guillaume Testu personnellement. Aucun tiers, aucun assistant, aucune communication externe. Le respect du secret professionnel est notre première règle.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT - FORM -->
+      <div class="contact-form" id="form">
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <h3>Demande reçue</h3>
+          <p>Merci pour votre confiance. Guillaume Testu vous répondra personnellement sous 48 heures, à l'adresse que vous avez indiquée.</p>
+        </div>
+
+        <div class="form-content scroll-reveal">
+          <div class="form-header">
+            <h2>Demander un <span class="it">entretien</span></h2>
+            <p>Champs marqués d'un astérisque obligatoires. Les autres aident à préparer notre échange.</p>
+          </div>
+
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Prénom <span class="form-required">*</span></label>
+                <input type="text" class="form-input" name="firstname" required placeholder="Votre prénom">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nom <span class="form-required">*</span></label>
+                <input type="text" class="form-input" name="lastname" required placeholder="Votre nom">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email <span class="form-required">*</span></label>
+                <input type="email" class="form-input" name="email" required placeholder="adresse@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Téléphone</label>
+                <input type="tel" class="form-input" name="phone" placeholder="+33 ou international">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Vous êtes</label>
+                <select class="form-select" name="role">
+                  <option value="">— Sélectionner —</option>
+                  <option>Joueur professionnel</option>
+                  <option>Représentant / agent</option>
+                  <option>Membre de l'entourage</option>
+                  <option>Préparateur / kiné / staff</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Niveau de pratique</label>
+                <select class="form-select" name="level">
+                  <option value="">— Sélectionner —</option>
+                  <option>Top 5 européen</option>
+                  <option>Première division européenne</option>
+                  <option>Deuxième division</option>
+                  <option>Sélection nationale</option>
+                  <option>Centre de formation / espoir</option>
+                  <option>Autre / non concerné</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Format d'accompagnement envisagé</label>
+              <select class="form-select" name="format">
+                <option value="">— Sélectionner —</option>
+                <option>Direction Remote (suivi à distance)</option>
+                <option>Direction Hybrid (suivi + présentiel mensuel)</option>
+                <option>Direction Elite (encadrement intégral)</option>
+                <option>Intervention ponctuelle / camp</option>
+                <option>Je ne sais pas encore — j'aimerais en discuter</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Votre situation actuelle &amp; vos objectifs <span class="form-required">*</span></label>
+              <textarea class="form-textarea" name="message" required placeholder="Décrivez librement votre situation actuelle, vos objectifs à court et moyen terme, ce qui vous amène à nous contacter. Tous les détails que vous jugez utiles sont les bienvenus."></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="form-checkbox-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" name="confidential" required>
+                  <span class="form-checkbox-label">Je comprends que cet échange est strictement confidentiel et qu'aucun tiers n'aura accès aux informations partagées.</span>
+                </label>
+                <label class="form-checkbox">
+                  <input type="checkbox" name="consent" required>
+                  <span class="form-checkbox-label">J'accepte d'être recontacté par Guillaume Testu à l'adresse fournie pour donner suite à cette demande.</span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="form-submit">Envoyer la demande</button>
+
+            <p class="form-footer-note">
+              Nous traitons un nombre restreint de demandes par mois. Nous nous engageons à répondre personnellement à chacune d'elles dans les 48 heures ouvrées.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING QUOTE ============ -->
+<section class="closing-quote">
+  <div class="container">
+    <p class="closing-quote-text scroll-reveal">
+      The mind is everything. <span class="em">What you think, you become.</span>
+    </p>
+    <div class="closing-quote-author scroll-reveal">
+      <span class="name">Buddha</span> · cité par Kobe Bryant
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>TM Performance <span class="italic gold">Elite</span></h3>
+        <p>Direction de la haute performance pour footballeurs d'élite. Expertise des grands clubs européens, méthodologie 360°, discrétion absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="services.html">Accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="services.html">Préparation physique</a></li>
+          <li><a href="services.html">Récupération &amp; soins</a></li>
+          <li><a href="services.html">Retour de blessure</a></li>
+          <li><a href="services.html">Pôle data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cabinet</h4>
+        <ul>
+          <li><a href="contact.html">Contact direct</a></li>
+          <li><a href="contact.html">Confidentialité</a></li>
+          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div>© 2026 TM Performance Elite — Tous droits réservés</div>
+      <div>Direction · Guillaume Testu</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+    // For static GitHub Pages: redirect to mailto with prefilled body
+    const form = event.target;
+    const data = new FormData(form);
+    const body = `Demande d'entretien — TM Performance Elite
+
+Prénom : ${data.get('firstname')}
+Nom : ${data.get('lastname')}
+Email : ${data.get('email')}
+Téléphone : ${data.get('phone') || '—'}
+
+Vous êtes : ${data.get('role') || '—'}
+Niveau de pratique : ${data.get('level') || '—'}
+Format envisagé : ${data.get('format') || '—'}
+
+Message :
+${data.get('message')}
+`;
+    const mailto = `mailto:contact@tm-performance.com?subject=${encodeURIComponent('Demande d\'entretien — ' + data.get('firstname') + ' ' + data.get('lastname'))}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    // Show success after delay
+    setTimeout(() => {
+      document.getElementById('formSuccess').classList.add('show');
+    }, 800);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TM Performance Elite — Direction de la performance pour footballeurs d'élite</title>
+<meta name="description" content="Coordination de haute performance pour footballeurs professionnels. Méthodologie issue des grands clubs européens. Une vision 360° de votre carrière.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(10, 9, 8, 0.4), var(--black) 90%),
+      url('https://images.unsplash.com/photo-1551958219-acbc608c6377?w=2400&q=80') center/cover;
+    filter: grayscale(100%) contrast(1.1) brightness(0.4);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    width: 100%;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .hero-marker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-marker::before {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    transform-origin: left;
+    animation: line-extend 1.4s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: scaleX(0);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--text-1);
+    margin-bottom: 24px;
+  }
+
+  .hero-title .accent {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-2);
+    max-width: 480px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta {
+    text-align: right;
+    align-self: end;
+    padding-bottom: 8px;
+  }
+
+  .hero-meta-line {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+
+  .hero-meta-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--bone);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-meta { text-align: left; }
+  }
+
+  /* ============ QUOTE ROTATOR ============ */
+  .quote-section {
+    padding: 140px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--black) 0%, var(--black-2) 100%);
+    position: relative;
+  }
+
+  .quote-section::before {
+    content: '"';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 200px;
+    color: var(--gold);
+    opacity: 0.08;
+    font-style: italic;
+    line-height: 1;
+  }
+
+  .quote-rotator {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 var(--gutter);
+    min-height: 280px;
+    position: relative;
+  }
+
+  .quote-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .quote-item.active { opacity: 1; }
+
+  .quote-text {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--text-1);
+    margin-bottom: 32px;
+    font-style: italic;
+    max-width: 800px;
+  }
+
+  .quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+  /* ============ MISSION ============ */
+  .mission {
+    padding: 140px 0;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 100px;
+    align-items: start;
+  }
+
+  .mission-label-block {
+    position: sticky;
+    top: 120px;
+  }
+
+  .mission-num {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .mission-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+
+  .mission-title .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .mission-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-2);
+    margin-bottom: 28px;
+  }
+
+  .mission-content p:first-child::first-letter {
+    font-family: var(--serif);
+    font-size: 80px;
+    float: left;
+    line-height: 0.85;
+    padding-right: 12px;
+    padding-top: 6px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .mission-pillars {
+    margin-top: 48px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+  }
+
+  .mission-pillar {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px dashed var(--line);
+    align-items: baseline;
+  }
+
+  .mission-pillar:last-child { border-bottom: none; }
+
+  .pillar-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    min-width: 30px;
+  }
+
+  .pillar-text {
+    font-family: var(--serif);
+    font-size: 21px;
+    color: var(--text-1);
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .mission-label-block { position: static; }
+  }
+
+  /* ============ EXPERTISE STRIP ============ */
+  .expertise {
+    padding: 120px 0;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .expertise-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .expertise-header h2 {
+    margin: 12px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .expertise-header p {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+  }
+
+  .expertise-item {
+    padding: 40px 32px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expertise-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 161, 74, 0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .expertise-item:hover { background: rgba(201, 161, 74, 0.04); }
+  .expertise-item:hover::before { opacity: 1; }
+
+  .expertise-item:nth-child(4n) { border-right: none; }
+  .expertise-item:nth-last-child(-n+4) { border-bottom: none; }
+
+  .expertise-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .expertise-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-1);
+    margin-bottom: 12px;
+  }
+
+  .expertise-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-3);
+  }
+
+  @media (max-width: 900px) {
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+    .expertise-item:nth-child(4n) { border-right: 1px solid var(--line); }
+    .expertise-item:nth-child(2n) { border-right: none; }
+    .expertise-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
+    .expertise-item:nth-last-child(-n+2) { border-bottom: none; }
+  }
+
+  @media (max-width: 600px) {
+    .expertise-grid { grid-template-columns: 1fr; }
+    .expertise-item { border-right: none !important; }
+    .expertise-item:not(:last-child) { border-bottom: 1px solid var(--line); }
+  }
+
+  /* ============ CREDENTIALS ============ */
+  .credentials {
+    padding: 140px 0;
+  }
+
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .credentials-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .credentials-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(50%) contrast(1.05);
+  }
+
+  .credentials-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(10, 9, 8, 0.5));
+  }
+
+  .credentials-image-frame {
+    position: absolute;
+    inset: -16px;
+    border: 1px solid var(--gold);
+    z-index: -1;
+    transform: translate(20px, 20px);
+  }
+
+  .credentials-content h2 {
+    margin: 16px 0 32px;
+  }
+
+  .credentials-content p {
+    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .credentials-stat {
+    display: flex;
+    gap: 60px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .stat-item {
+    flex: 1;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-3);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .credentials-grid { grid-template-columns: 1fr; gap: 60px; }
+    .credentials-stat { gap: 30px; }
+    .stat-num { font-size: 42px; }
+  }
+
+  /* ============ APPROACH PREVIEW ============ */
+  .approach {
+    padding: 140px 0;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .approach-watermark {
+    position: absolute;
+    bottom: -100px;
+    right: -50px;
+    font-family: var(--serif);
+    font-size: 480px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.025;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .approach-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .approach-header h2 {
+    margin: 16px auto;
+    max-width: 800px;
+  }
+
+  .approach-steps {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .approach-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .approach-step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1;
+  }
+
+  .step-content h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--text-1);
+  }
+
+  .step-content p {
+    color: var(--text-2);
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 720px;
+  }
+
+  .approach-cta {
+    text-align: center;
+    margin-top: 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (max-width: 700px) {
+    .approach-step { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* ============ SECOND QUOTE ============ */
+  .feature-quote {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--black);
+  }
+
+  .feature-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--text-1);
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 var(--gutter);
+  }
+
+  .feature-quote-text .em {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .feature-quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .feature-quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    padding: 160px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+  }
+
+  .final-cta-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 48px;
+    color: var(--text-2);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      TM Performance
+      <span class="brand-divider"></span>
+      <span class="brand-tag">Elite</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="methodologie.html">Méthodologie</a></li>
+      <li><a href="services.html">Accompagnement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Demander un entretien</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="methodologie.html">Méthodologie</a>
+  <a href="services.html">Accompagnement</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-marker reveal">Performance · Direction · Carrière</div>
+        <h1 class="hero-title reveal delay-1">
+          La carrière n'est pas un<br>
+          <span class="accent">accident</span>
+        </h1>
+        <p class="hero-subtitle reveal delay-2">
+          Direction de la haute performance pour footballeurs d'élite. Une vision à 360° de votre carrière, pilotée par l'expertise des grands clubs européens — préparation, soins, données, nutrition, sommeil, retour de blessure.
+        </p>
+        <div class="hero-cta reveal delay-3">
+          <a href="contact.html" class="btn btn-primary">Initier un entretien</a>
+          <a href="methodologie.html" class="btn btn-ghost">Découvrir la méthode</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="reveal delay-4">
+          <div class="hero-meta-line">Direction</div>
+          <div class="hero-meta-value">Guillaume Testu</div>
+        </div>
+        <div class="reveal delay-5">
+          <div class="hero-meta-line">Expertise</div>
+          <div class="hero-meta-value italic">Stade Rennais · Ligue 1</div>
+        </div>
+        <div class="reveal delay-6">
+          <div class="hero-meta-line">Approche</div>
+          <div class="hero-meta-value italic">Coordination 360°</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ROTATOR ============ -->
+<section class="quote-section">
+  <div class="quote-rotator">
+    <div class="quote-item active">
+      <div class="quote-text">"Some people want it to happen, some wish it would happen, others make it happen."</div>
+      <div class="quote-author"><span class="name">Michael Jordan</span> · 6× NBA Champion</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-text">"The most important thing is to try and inspire people so that they can be great in whatever they want to do."</div>
+      <div class="quote-author"><span class="name">Kobe Bryant</span> · 5× NBA Champion</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-text">"I've missed more than 9,000 shots. I've lost almost 300 games. I've failed over and over and over again. And that is why I succeed."</div>
+      <div class="quote-author"><span class="name">Michael Jordan</span> · Hall of Fame</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-text">"Today I will do what others won't, so tomorrow I can accomplish what others can't."</div>
+      <div class="quote-author"><span class="name">Jerry Rice</span> · 3× Super Bowl Champion</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-text">"You have to fight to reach your dream. You have to sacrifice and work hard for it."</div>
+      <div class="quote-author"><span class="name">Lionel Messi</span> · 8× Ballon d'Or</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<section class="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-label-block scroll-reveal">
+        <div class="mission-num">01</div>
+        <h2 class="mission-title">Une <span class="it">institution</span><br>de la performance</h2>
+      </div>
+      <div class="mission-content scroll-reveal">
+        <p>
+          La carrière d'un athlète d'élite ne se construit pas par à-coups. Elle se compose, saison après saison, de décisions précises sur le corps, l'esprit, le travail technique, le sommeil, l'alimentation, la récupération. Chacune de ces décisions, prise isolément, est déjà une affaire d'experts. Coordonnées entre elles, elles deviennent une trajectoire.
+        </p>
+        <p>
+          TM Performance Elite est née d'un constat : même les joueurs les plus talentueux des cinq grands championnats avancent souvent sans direction performance globale. Leur club apporte un cadre collectif. Leur agent gère le contractuel. Mais qui pilote, en continu, l'ensemble des décisions individuelles qui déterminent la longévité, la résistance aux blessures et la régularité de très haut niveau ?
+        </p>
+        <p>
+          Cette direction, nous la prenons. Avec la rigueur héritée des grands clubs européens. Avec la discrétion d'une institution qui travaille pour l'athlète, et seulement pour lui.
+        </p>
+
+        <div class="mission-pillars">
+          <div class="mission-pillar">
+            <div class="pillar-num">01.</div>
+            <div class="pillar-text">Vision long terme — saison par saison, étape par étape</div>
+          </div>
+          <div class="mission-pillar">
+            <div class="pillar-num">02.</div>
+            <div class="pillar-text">Coordination multidisciplinaire — un seul interlocuteur, tous les experts</div>
+          </div>
+          <div class="mission-pillar">
+            <div class="pillar-num">03.</div>
+            <div class="pillar-text">Compatibilité club — nous travaillons en complément, jamais contre</div>
+          </div>
+          <div class="mission-pillar">
+            <div class="pillar-num">04.</div>
+            <div class="pillar-text">Discrétion absolue — votre carrière reste votre affaire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERTISE GRID ============ -->
+<section class="expertise">
+  <div class="container">
+    <div class="expertise-header scroll-reveal">
+      <div class="eyebrow center">Domaines d'expertise · 360°</div>
+      <h2>Tout ce qui détermine votre <span class="italic gold">performance</span></h2>
+      <p>Huit champs d'intervention coordonnés par un seul interlocuteur. Chacun confié à des experts sélectionnés pour leur sérieux, leur professionnalisme et leur connaissance du très haut niveau.</p>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">01 / 08</span>
+        <h3 class="expertise-title">Préparation physique &amp; planification athlétique</h3>
+        <p class="expertise-desc">Méthodologie issue des grands championnats. Périodisation tactique, charge individuelle, force, vitesse, explosivité.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">02 / 08</span>
+        <h3 class="expertise-title">Stratégies de récupération &amp; soins</h3>
+        <p class="expertise-desc">Kinésithérapie sportive, ostéopathie, posturologie. Réseau d'intervenants sélectionnés sur le critère du très haut niveau.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">03 / 08</span>
+        <h3 class="expertise-title">Protocole de retour après blessure</h3>
+        <p class="expertise-desc">Ré-athlétisation progressive, retour au terrain, prévention de la récidive. Le moment le plus stratégique d'une carrière.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">04 / 08</span>
+        <h3 class="expertise-title">Pôle data &amp; analyse de performance</h3>
+        <p class="expertise-desc">Lecture des données physiques (GPS, charge, sommeil) et technico-tactiques. Indicateurs de précurseurs de blessure.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">05 / 08</span>
+        <h3 class="expertise-title">Développement individuel &amp; analyse tactique</h3>
+        <p class="expertise-desc">Lecture vidéo de votre jeu, identification des axes de progression par poste, travail technique ciblé.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">06 / 08</span>
+        <h3 class="expertise-title">Nutrition &amp; mise à disposition de chef</h3>
+        <p class="expertise-desc">Plan alimentaire individuel, périodisation nutritionnelle, chef privé sélectionné selon vos contraintes et goûts.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">07 / 08</span>
+        <h3 class="expertise-title">Sommeil &amp; récupération nocturne</h3>
+        <p class="expertise-desc">Audit du sommeil, conseil sur literie haute performance, gestion des décalages liés aux déplacements internationaux.</p>
+      </div>
+      <div class="expertise-item scroll-reveal">
+        <span class="expertise-num">08 / 08</span>
+        <h3 class="expertise-title">Réseau d'intervenants sélectionnés</h3>
+        <p class="expertise-desc">Mise en relation avec les meilleurs spécialistes. Critère unique : connaissance avérée du très haut niveau.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE QUOTE ============ -->
+<section class="feature-quote">
+  <div class="container">
+    <p class="feature-quote-text scroll-reveal">
+      "Hard work beats talent <span class="em">when talent doesn't work hard.</span>"
+    </p>
+    <div class="feature-quote-author scroll-reveal">
+      <span class="name">Tim Notke</span> · Coach
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENTIALS ============ -->
+<section class="credentials">
+  <div class="container">
+    <div class="credentials-grid">
+      <div class="credentials-image scroll-reveal">
+        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1200&q=80" alt="Direction performance">
+        <div class="credentials-image-frame"></div>
+      </div>
+      <div class="credentials-content scroll-reveal">
+        <div class="eyebrow">Direction · Guillaume Testu</div>
+        <h2>L'expertise <span class="italic gold">des grands clubs</span> au service de votre carrière</h2>
+        <p>
+          Diplômé UEFA A, ancien Performance Director au Stade Rennais (Ligue 1, 2021–2023), Guillaume Testu a coordonné la performance de joueurs des cinq grands championnats. Son parcours combine préparation physique, ré-athlétisation, accompagnement carrière et coaching de haut niveau.
+        </p>
+        <p>
+          Cette double casquette — physique et tactique — est rare. Elle permet une lecture intégrée de la performance que peu d'intervenants peuvent offrir. Pas de simple préparation physique. Pas de simple coaching. Une coordination méthodologique complète.
+        </p>
+        <div class="credentials-stat">
+          <div class="stat-item">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Années dans le<br>football professionnel</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">L1</div>
+            <div class="stat-label">Performance Director<br>Stade Rennais</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">UEFA A</div>
+            <div class="stat-label">Licence d'entraîneur<br>professionnel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROACH PREVIEW ============ -->
+<section class="approach">
+  <div class="approach-watermark">Méthode</div>
+  <div class="container">
+    <div class="approach-header scroll-reveal">
+      <div class="eyebrow center">La méthode · Quatre temps</div>
+      <h2>Une <span class="italic gold">architecture</span> de la performance</h2>
+      <p>Notre méthodologie suit un cycle structuré, reproductible, mais entièrement personnalisé à votre situation, votre contrat, vos objectifs et votre histoire physique.</p>
+    </div>
+
+    <div class="approach-steps">
+      <div class="approach-step scroll-reveal">
+        <div class="step-num">i.</div>
+        <div class="step-content">
+          <h3>Diagnostic intégral</h3>
+          <p>Audit physique, technique, tactique, nutritionnel, sommeil. Lecture de votre historique de blessures et de votre profil de jeu. Cartographie complète de la situation actuelle. Aucune décision avant ce socle.</p>
+        </div>
+      </div>
+      <div class="approach-step scroll-reveal">
+        <div class="step-num">ii.</div>
+        <div class="step-content">
+          <h3>Architecture personnalisée</h3>
+          <p>Construction du plan saison par saison, avec objectifs de progression, indicateurs de suivi, jalons clés. Choix des intervenants externes nécessaires. Coordination avec le staff de votre club si vous êtes sous contrat.</p>
+        </div>
+      </div>
+      <div class="approach-step scroll-reveal">
+        <div class="step-num">iii.</div>
+        <div class="step-content">
+          <h3>Pilotage continu</h3>
+          <p>Suivi hebdomadaire des données physiques et techniques. Ajustements en temps réel. Présence d'experts à vos côtés selon le calendrier convenu. Réactivité immédiate en cas d'alerte ou de blessure.</p>
+        </div>
+      </div>
+      <div class="approach-step scroll-reveal">
+        <div class="step-num">iv.</div>
+        <div class="step-content">
+          <h3>Évolution long terme</h3>
+          <p>Bilans trimestriels et annuels. Anticipation des étapes de carrière : transferts, changements de championnat, fin de contrat, transition. La performance se construit sur cinq, dix, quinze ans — pas sur une saison.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="approach-cta scroll-reveal">
+      <a href="methodologie.html" class="btn btn-ghost">Lire la méthodologie complète</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-eyebrow scroll-reveal">
+      <div class="eyebrow center no-line">Prendre contact</div>
+    </div>
+    <h2 class="scroll-reveal">
+      Le talent vous a mené ici.<br>
+      <span class="it">La méthode</span> vous mènera plus loin.
+    </h2>
+    <p class="scroll-reveal">
+      Nous travaillons avec un nombre restreint d'athlètes, à toutes les étapes de leur carrière, qui partagent une vision long terme de leur trajectoire. Si c'est votre cas, prenons le temps d'un échange.
+    </p>
+    <div class="scroll-reveal">
+      <a href="contact.html" class="btn btn-primary">Demander un entretien confidentiel</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>TM Performance <span class="italic gold">Elite</span></h3>
+        <p>Direction de la haute performance pour footballeurs d'élite. Expertise des grands clubs européens, méthodologie 360°, discrétion absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="services.html">Accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="services.html">Préparation physique</a></li>
+          <li><a href="services.html">Récupération &amp; soins</a></li>
+          <li><a href="services.html">Retour de blessure</a></li>
+          <li><a href="services.html">Pôle data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cabinet</h4>
+        <ul>
+          <li><a href="contact.html">Contact direct</a></li>
+          <li><a href="contact.html">Confidentialité</a></li>
+          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div>© 2026 TM Performance Elite — Tous droits réservés</div>
+      <div>Direction · Guillaume Testu</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accompagnement — TM Performance Elite</title>
+<meta name="description" content="Les huit domaines d'expertise et les formats d'accompagnement TM Performance Elite pour footballeurs d'élite.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* PAGE HEADER */
+  .page-header {
+    padding: 200px 0 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header-watermark {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 380px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 100px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 24px 0;
+  }
+
+  .page-header-title .it {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .page-header-intro {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--text-2);
+    font-weight: 300;
+    padding-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .page-header-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ DOMAINS ============ */
+  .domains-intro {
+    padding: 100px 0 40px;
+  }
+
+  .domains-intro-text {
+    max-width: 780px;
+  }
+
+  .domains-intro-text p {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 24px;
+  }
+
+  .domains-intro-text p:first-child::first-letter {
+    font-family: var(--serif);
+    font-size: 80px;
+    float: left;
+    line-height: 0.85;
+    padding-right: 12px;
+    padding-top: 6px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .domains {
+    padding: 80px 0 140px;
+  }
+
+  .domain-block {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .domain-block:last-child { border-bottom: none; }
+
+  .domain-block.alt {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .domain-block.alt .domain-image-side {
+    order: 2;
+  }
+
+  .domain-image-side {
+    position: sticky;
+    top: 120px;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--black-2);
+  }
+
+  .domain-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(50%) contrast(1.05) brightness(0.85);
+    transition: filter 0.6s ease;
+  }
+
+  .domain-block:hover .domain-image-side img {
+    filter: grayscale(20%) contrast(1.1);
+  }
+
+  .domain-content .domain-num {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .domain-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 32px;
+  }
+
+  .domain-content > p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-2);
+    margin-bottom: 28px;
+  }
+
+  .domain-features {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .domain-feature {
+    display: flex;
+    gap: 20px;
+    padding: 14px 0;
+    align-items: baseline;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .domain-feature:last-child { border-bottom: none; }
+
+  .domain-feature-marker {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    min-width: 24px;
+  }
+
+  .domain-feature-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--text-1);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .domain-block, .domain-block.alt { grid-template-columns: 1fr; gap: 32px; }
+    .domain-block.alt .domain-image-side { order: 0; }
+    .domain-image-side { position: static; aspect-ratio: 16/10; }
+  }
+
+  /* ============ MIDDLE QUOTE ============ */
+  .mid-quote {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mid-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.25;
+    font-style: italic;
+    color: var(--text-1);
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 var(--gutter);
+  }
+
+  .mid-quote-text .em {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .mid-quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .mid-quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+  /* ============ FORMATS ============ */
+  .formats {
+    padding: 140px 0;
+  }
+
+  .formats-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .formats-header h2 {
+    margin: 16px auto;
+    max-width: 800px;
+  }
+
+  .formats-header p {
+    max-width: 700px;
+    margin: 16px auto 0;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .format-card {
+    padding: 48px 36px;
+    border: 1px solid var(--line);
+    background: var(--black-2);
+    border-radius: var(--radius);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .format-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+
+  .format-card:hover::before { transform: scaleX(1); }
+
+  .format-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .format-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, rgba(201, 161, 74, 0.04) 0%, var(--black-2) 60%);
+  }
+
+  .format-card.featured::before {
+    transform: scaleX(1);
+  }
+
+  .format-tier {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .format-name {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-1);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .format-name .it { font-style: italic; color: var(--gold); }
+
+  .format-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-2);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .format-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .format-features li {
+    padding: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-2);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .format-features li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 24px;
+    line-height: 1;
+    margin-top: -4px;
+  }
+
+  .format-cta {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border: 1px solid var(--line-2);
+    color: var(--text-1);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border-radius: var(--radius);
+    font-weight: 500;
+  }
+
+  .format-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .format-card.featured .format-cta {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .format-card.featured .format-cta:hover {
+    background: var(--gold-bright);
+  }
+
+  @media (max-width: 900px) {
+    .formats-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ ADDITIONAL ============ */
+  .additional {
+    padding: 140px 0;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .additional-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .additional-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin: 16px 0 32px;
+    letter-spacing: -0.015em;
+  }
+
+  .additional-content h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .additional-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-2);
+  }
+
+  .additional-list {
+    list-style: none;
+  }
+
+  .additional-list li {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+  }
+
+  .additional-list li:last-child { border-bottom: none; }
+
+  .additional-list-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .additional-list-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-1);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .additional-list-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-3);
+  }
+
+  @media (max-width: 800px) {
+    .additional-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    padding: 160px 0;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 24px auto 32px;
+    max-width: 1000px;
+  }
+
+  .final-cta h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      TM Performance
+      <span class="brand-divider"></span>
+      <span class="brand-tag">Elite</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="methodologie.html">Méthodologie</a></li>
+      <li><a href="services.html" class="active">Accompagnement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Demander un entretien</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="methodologie.html">Méthodologie</a>
+  <a href="services.html">Accompagnement</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="page-header">
+  <div class="page-header-watermark">A</div>
+  <div class="container">
+    <div class="page-header-grid">
+      <div>
+        <div class="eyebrow reveal">Accompagnement · Huit domaines · Trois formats</div>
+        <h1 class="page-header-title reveal delay-1">
+          Tout ce qui<br>
+          <span class="it">décide</span>
+        </h1>
+      </div>
+      <div class="reveal delay-2">
+        <p class="page-header-intro">
+          Huit champs d'expertise coordonnés. Trois formats d'accompagnement adaptables à votre situation. Une seule logique : la performance comme architecture, jamais comme accumulation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOMAINS INTRO ============ -->
+<section class="domains-intro">
+  <div class="container">
+    <div class="domains-intro-text scroll-reveal">
+      <div class="eyebrow">Les domaines d'intervention</div>
+      <p style="margin-top: 24px;">
+        Chaque domaine compte. Aucun n'est dispensable. Mais la vraie valeur ne vient pas de l'addition de huit expertises — elle vient de leur coordination par une seule direction. Voici comment chaque domaine s'inscrit dans une lecture intégrée de votre performance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOMAINS ============ -->
+<section class="domains">
+  <div class="container">
+
+    <!-- DOMAIN 1 -->
+    <article class="domain-block scroll-reveal">
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Préparation physique">
+      </div>
+      <div class="domain-content">
+        <div class="domain-num">i.</div>
+        <h2>Préparation physique<br>&amp; planification athlétique</h2>
+        <p>
+          La préparation d'un footballeur de haut niveau ne se réduit pas à de la musculation ou à du cardio. C'est une science précise qui articule force, vitesse, explosivité, endurance, mobilité — chacune périodisée selon le calendrier de matchs, la position sur le terrain, l'histoire physique du joueur.
+        </p>
+        <p>
+          Notre méthodologie est issue de la périodisation tactique pratiquée dans les grands championnats. Elle est entièrement individualisée, et conçue pour s'articuler en complément du travail collectif réalisé en club.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Plan athlétique annuel personnalisé, périodisé par bloc</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Travail force, vitesse, explosivité adapté au poste</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Suivi de la charge : signaux faibles, fenêtres de surcharge</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Coordination avec votre préparateur physique de club</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DOMAIN 2 -->
+    <article class="domain-block alt scroll-reveal">
+      <div class="domain-content">
+        <div class="domain-num">ii.</div>
+        <h2>Stratégies de récupération<br>&amp; soins</h2>
+        <p>
+          La récupération n'est pas l'absence d'entraînement. C'est un travail à part entière — protocoles de soins, sommeil, alimentation, équilibre nerveux. Pour un joueur qui enchaîne les matchs européens, internationaux et de championnat, c'est souvent la différence entre une saison régulière et une saison interrompue.
+        </p>
+        <p>
+          Nous mobilisons un cercle restreint de kinésithérapeutes du sport, ostéopathes et posturologues, tous sélectionnés pour leur connaissance avérée du très haut niveau, et coordonnés selon votre calendrier réel.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Réseau kinésithérapie sportive haute exigence</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Ostéopathie spécialisée sportif professionnel</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Posturologie, chaînes musculaires, équilibres</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Protocoles personnalisés post-match et inter-match</div>
+          </div>
+        </div>
+      </div>
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Soins kiné">
+      </div>
+    </article>
+
+    <!-- DOMAIN 3 -->
+    <article class="domain-block scroll-reveal">
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=80" alt="Retour de blessure">
+      </div>
+      <div class="domain-content">
+        <div class="domain-num">iii.</div>
+        <h2>Protocole de retour<br>après blessure</h2>
+        <p>
+          La période la plus stratégique d'une carrière n'est pas celle où tout va bien. C'est celle qui suit une blessure. Un retour mal géré, c'est six mois perdus au lieu de trois. C'est une récidive qui vous suit pendant des années. C'est parfois une carrière qui ne reprend jamais son niveau.
+        </p>
+        <p>
+          Notre approche du retour combine ré-athlétisation progressive, suivi multidisciplinaire et reconstruction de la confiance. Aucun retour précoce sous pression contractuelle. Aucun retour tardif par excès de prudence. Le bon moment, validé par les indicateurs et par votre ressenti.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Programme de ré-athlétisation par phases</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Indicateurs de retour au terrain validés scientifiquement</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Prévention de la récidive : asymétries, compensations</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Accompagnement psychologique de la phase retour</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DOMAIN 4 -->
+    <article class="domain-block alt scroll-reveal">
+      <div class="domain-content">
+        <div class="domain-num">iv.</div>
+        <h2>Pôle data<br>&amp; analyse de performance</h2>
+        <p>
+          La data n'est utile que lue intelligemment. Données GPS, charge, fréquence cardiaque, sommeil, RPE d'un côté ; données techniques (xG, duels, sprints, distances parcourues, qualité des passes) de l'autre. Croisées, elles dessinent une image précise de votre forme réelle, de vos progrès, et des signaux annonciateurs de blessure.
+        </p>
+        <p>
+          Notre pôle data lit ces indicateurs chaque semaine, en lien avec votre staff club si vous êtes sous contrat, et identifie ce qui mérite une intervention. Avant que le problème devienne visible.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Lecture hebdomadaire des données physiques</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Analyse technico-tactique par poste</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Identification des signaux faibles précurseurs de blessure</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Reporting clair, restitué en visio toutes les deux semaines</div>
+          </div>
+        </div>
+      </div>
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="Data performance">
+      </div>
+    </article>
+
+    <!-- DOMAIN 5 -->
+    <article class="domain-block scroll-reveal">
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?w=900&q=80" alt="Analyse tactique">
+      </div>
+      <div class="domain-content">
+        <div class="domain-num">v.</div>
+        <h2>Développement individuel<br>&amp; analyse tactique</h2>
+        <p>
+          Au-delà du physique et de la donnée, le travail technico-tactique reste central. Mais à votre niveau, il ne s'agit plus d'apprendre — il s'agit d'affiner. Lecture vidéo de vos derniers matchs, identification des comportements répétés, axes de progression sur votre poste, micro-corrections qui font la différence.
+        </p>
+        <p>
+          Cette dimension est souvent absente du suivi des joueurs professionnels une fois en club, faute de temps individuel. Nous la prenons en charge avec la même rigueur que le reste.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Analyse vidéo individualisée mensuelle</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Identification des comportements à corriger ou amplifier</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Travail technique ciblé selon le poste</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Lecture tactique du système de jeu de votre club</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DOMAIN 6 -->
+    <article class="domain-block alt scroll-reveal">
+      <div class="domain-content">
+        <div class="domain-num">vi.</div>
+        <h2>Nutrition &amp; mise<br>à disposition de chef</h2>
+        <p>
+          Ce que vous mangez détermine votre récupération, votre composition corporelle, votre niveau d'inflammation, votre énergie pendant les matchs. C'est la dimension la plus quotidienne de la performance — et souvent la plus difficile à tenir sur la durée d'une saison.
+        </p>
+        <p>
+          Notre approche : un plan nutritionnel individuel établi avec un nutritionniste du sport, et la mise à disposition d'un chef privé sélectionné pour sa capacité à conjuguer haute exigence sportive et plaisir réel à table. Vous mangez bien. Vous performez mieux.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Plan nutritionnel individuel et périodisé</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Nutritionniste du sport référent dédié</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Sélection &amp; mise à disposition d'un chef privé</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Adaptation nutritionnelle aux déplacements internationaux</div>
+          </div>
+        </div>
+      </div>
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80" alt="Nutrition haute performance">
+      </div>
+    </article>
+
+    <!-- DOMAIN 7 -->
+    <article class="domain-block scroll-reveal">
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&q=80" alt="Sommeil performance">
+      </div>
+      <div class="domain-content">
+        <div class="domain-num">vii.</div>
+        <h2>Sommeil &amp; récupération<br>nocturne</h2>
+        <p>
+          Le sommeil est le premier facteur de récupération musculaire, hormonale, cognitive. Pour un footballeur professionnel qui voyage chaque semaine, qui dort dans des hôtels, qui subit des décalages horaires lors des compétitions internationales, c'est aussi le facteur le plus difficile à maîtriser.
+        </p>
+        <p>
+          Audit complet du sommeil, conseil sur la literie haute performance, gestion des décalages horaires, optimisation de l'environnement nocturne : nous traitons cette dimension avec la même attention que les autres.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Audit complet du sommeil &amp; suivi continu</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Conseil literie sportive haute performance</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Protocoles décalage horaire (matchs internationaux, transferts)</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Optimisation de l'environnement de chambre</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DOMAIN 8 -->
+    <article class="domain-block alt scroll-reveal">
+      <div class="domain-content">
+        <div class="domain-num">viii.</div>
+        <h2>Réseau d'intervenants<br>sélectionnés</h2>
+        <p>
+          Notre rôle de coordinateur n'aurait pas de sens sans un réseau de praticiens d'exception sur lesquels nous appuyer. Ce réseau a été construit dans la durée, à partir des années passées dans les grands clubs européens. Chaque intervenant y a été admis selon le même triple critère : sérieux, professionnalisme, connaissance avérée du très haut niveau.
+        </p>
+        <p>
+          Nous mobilisons ces intervenants pour vous, en garantissant la cohérence méthodologique. Vous bénéficiez d'un accès au meilleur — sans avoir à le chercher vous-même, sans risquer de tomber sur un praticien brillant en théorie mais inadapté à votre niveau d'exigence.
+        </p>
+        <div class="domain-features">
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Mise en relation avec experts pré-sélectionnés</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Cohérence méthodologique entre tous les intervenants</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Possibilité d'intégrer vos propres praticiens existants</div>
+          </div>
+          <div class="domain-feature">
+            <div class="domain-feature-marker">·</div>
+            <div class="domain-feature-text">Confidentialité absolue garantie contractuellement</div>
+          </div>
+        </div>
+      </div>
+      <div class="domain-image-side">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80" alt="Réseau d'experts">
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ MIDDLE QUOTE ============ -->
+<section class="mid-quote">
+  <div class="container">
+    <p class="mid-quote-text scroll-reveal">
+      I can accept failure, everyone fails at something. <span class="em">But I can't accept not trying.</span>
+    </p>
+    <div class="mid-quote-author scroll-reveal">
+      <span class="name">Michael Jordan</span> · 6× NBA Champion
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMATS ============ -->
+<section class="formats">
+  <div class="container">
+    <div class="formats-header scroll-reveal">
+      <div class="eyebrow center">Formats d'accompagnement</div>
+      <h2>Trois <span class="italic gold">architectures</span> de collaboration</h2>
+      <p>Notre accompagnement s'adapte à votre situation, votre statut, votre calendrier. Trois formats principaux, tous personnalisables. Nous discutons des modalités précises lors de l'entretien initial.</p>
+    </div>
+
+    <div class="formats-grid">
+
+      <!-- FORMAT 1 - REMOTE -->
+      <div class="format-card scroll-reveal">
+        <div class="format-tier">Niveau · I</div>
+        <h3 class="format-name">Direction <span class="it">Remote</span></h3>
+        <p class="format-tagline">Pour le joueur qui dispose déjà d'un staff club et souhaite un regard expert externe en continu.</p>
+        <ul class="format-features">
+          <li>Diagnostic intégral initial</li>
+          <li>Architecture de performance personnalisée</li>
+          <li>Suivi data hebdomadaire</li>
+          <li>Visios direction toutes les deux semaines</li>
+          <li>Mise en relation avec le réseau de prestataires</li>
+          <li>WhatsApp direct 7 jours sur 7</li>
+          <li>Bilan trimestriel approfondi</li>
+        </ul>
+        <a href="contact.html" class="format-cta">Discuter de ce format</a>
+      </div>
+
+      <!-- FORMAT 2 - HYBRID FEATURED -->
+      <div class="format-card featured scroll-reveal">
+        <div class="format-tier">Niveau · II · Le plus complet</div>
+        <h3 class="format-name">Direction <span class="it">Hybrid</span></h3>
+        <p class="format-tagline">Pour le joueur qui souhaite un suivi continu enrichi d'interventions présentielles régulières.</p>
+        <ul class="format-features">
+          <li>L'intégralité du format Direction Remote</li>
+          <li>Deux journées présentielles par mois</li>
+          <li>Coordination directe des intervenants</li>
+          <li>Accès prioritaire au réseau d'experts</li>
+          <li>Visios direction trois fois par mois</li>
+          <li>Réactivité sous 24h en cas d'alerte</li>
+          <li>Mise à disposition possible de chef privé</li>
+        </ul>
+        <a href="contact.html" class="format-cta">Discuter de ce format</a>
+      </div>
+
+      <!-- FORMAT 3 - ELITE -->
+      <div class="format-card scroll-reveal">
+        <div class="format-tier">Niveau · III · Sur sélection</div>
+        <h3 class="format-name">Direction <span class="it">Elite</span></h3>
+        <p class="format-tagline">Pour l'athlète qui souhaite un encadrement intégral, quasi-quotidien, à toutes les étapes.</p>
+        <ul class="format-features">
+          <li>L'intégralité du format Direction Hybrid</li>
+          <li>Quatre journées présentielles par mois</li>
+          <li>Présence terrain Guillaume Testu deux fois par saison</li>
+          <li>Réunion staff multidisciplinaire trimestrielle</li>
+          <li>Accompagnement carrière intégré</li>
+          <li>WhatsApp prioritaire (réponse sous 1h)</li>
+          <li>Accès prioritaire aux camps résidentiels APEX</li>
+        </ul>
+        <a href="contact.html" class="format-cta">Discuter de ce format</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADDITIONAL ============ -->
+<section class="additional">
+  <div class="container">
+    <div class="additional-grid">
+      <div class="additional-content scroll-reveal">
+        <div class="eyebrow">Au-delà des formats</div>
+        <h2>Interventions <span class="it">ponctuelles</span> &amp; complémentaires</h2>
+        <p>
+          Au-delà des formats d'accompagnement continu, nous proposons des interventions ciblées pour des moments précis de votre carrière. Camps résidentiels en saison, journées d'évaluation, présence sur des moments clés (signature, retour de blessure, intersaison).
+        </p>
+        <p>
+          Ces formats sont accessibles aux abonnés en tarif préférentiel, ou de manière indépendante après évaluation.
+        </p>
+      </div>
+
+      <ul class="additional-list scroll-reveal">
+        <li>
+          <div class="additional-list-num">i.</div>
+          <div>
+            <div class="additional-list-title">Camps résidentiels APEX</div>
+            <div class="additional-list-desc">Stages d'une semaine en Bretagne ou au Maroc, en environnement haut de gamme. Multidisciplinaire intégral. Quelques places par session.</div>
+          </div>
+        </li>
+        <li>
+          <div class="additional-list-num">ii.</div>
+          <div>
+            <div class="additional-list-title">Journée terrain Guillaume Testu</div>
+            <div class="additional-list-desc">Présence physique sur une journée — brief, séance terrain, debrief. Format intense pour des moments charnières.</div>
+          </div>
+        </li>
+        <li>
+          <div class="additional-list-num">iii.</div>
+          <div>
+            <div class="additional-list-title">Bilan trimestriel approfondi</div>
+            <div class="additional-list-desc">Rapport écrit complet, projection saison, axes prioritaires. Idéal en fin et début de saison.</div>
+          </div>
+        </li>
+        <li>
+          <div class="additional-list-num">iv.</div>
+          <div>
+            <div class="additional-list-title">Accompagnement transition de carrière</div>
+            <div class="additional-list-desc">Préparation aux changements de championnat, signature de contrat, reconversion progressive. Travail de visualisation, dimension psychologique, projection.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="eyebrow center no-line scroll-reveal">Prochaine étape</div>
+    <h2 class="scroll-reveal">
+      Discutons de la <span class="it">forme</span><br>
+      la plus adaptée
+    </h2>
+    <p class="scroll-reveal">
+      Aucun format n'est figé. Nous adaptons toujours notre accompagnement à votre situation, votre niveau, votre calendrier, vos objectifs. Le seul moyen de définir la bonne forme : un échange.
+    </p>
+    <div class="scroll-reveal">
+      <a href="contact.html" class="btn btn-primary">Demander un entretien confidentiel</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>TM Performance <span class="italic gold">Elite</span></h3>
+        <p>Direction de la haute performance pour footballeurs d'élite. Expertise des grands clubs européens, méthodologie 360°, discrétion absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="services.html">Accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="services.html">Préparation physique</a></li>
+          <li><a href="services.html">Récupération &amp; soins</a></li>
+          <li><a href="services.html">Retour de blessure</a></li>
+          <li><a href="services.html">Pôle data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cabinet</h4>
+        <ul>
+          <li><a href="contact.html">Contact direct</a></li>
+          <li><a href="contact.html">Confidentialité</a></li>
+          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div>© 2026 TM Performance Elite — Tous droits réservés</div>
+      <div>Direction · Guillaume Testu</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

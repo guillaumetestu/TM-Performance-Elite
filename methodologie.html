@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Méthodologie — TM Performance Elite</title>
+<meta name="description" content="La méthodologie TM Performance Elite : architecture de la performance pour footballeurs professionnels. Approche 360°, coordination multidisciplinaire, vision long terme.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ============ PAGE HEADER ============ */
+  .page-header {
+    padding: 200px 0 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header-watermark {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 380px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.04em;
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 100px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 24px 0;
+  }
+
+  .page-header-title .it {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .page-header-intro {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--text-2);
+    font-weight: 300;
+    padding-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .page-header-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ INTRO PHILOSOPHY ============ */
+  .philosophy {
+    padding: 140px 0;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .philosophy-block {
+    padding: 40px;
+    border: 1px solid var(--line);
+    background: var(--black-2);
+    border-radius: var(--radius);
+  }
+
+  .philosophy-block h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-1);
+  }
+
+  .philosophy-block h3 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .philosophy-block p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 16px;
+  }
+
+  .philosophy-block p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 800px) {
+    .philosophy-grid { grid-template-columns: 1fr; gap: 24px; }
+    .philosophy-block { padding: 28px; }
+  }
+
+  /* ============ FOUR PHASES ============ */
+  .phases {
+    padding: 140px 0;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phases-header {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .phases-header h2 {
+    margin: 16px auto;
+    max-width: 800px;
+  }
+
+  .phases-header p {
+    max-width: 640px;
+    margin: 16px auto 0;
+  }
+
+  .phase-block {
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .phase-block:last-child { margin-bottom: 0; }
+
+  .phase-marker {
+    position: sticky;
+    top: 120px;
+  }
+
+  .phase-marker-num {
+    font-family: var(--serif);
+    font-size: 100px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .phase-marker-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  .phase-content {
+    border-left: 1px solid var(--line);
+    padding-left: 60px;
+    padding-bottom: 40px;
+  }
+
+  .phase-content h3 {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: var(--text-1);
+    line-height: 1.1;
+  }
+
+  .phase-content > p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    color: var(--text-2);
+  }
+
+  .phase-tasks {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .phase-task {
+    display: flex;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--line);
+    align-items: baseline;
+  }
+
+  .phase-task:last-child { border-bottom: none; }
+
+  .phase-task-marker {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    min-width: 40px;
+    text-transform: uppercase;
+  }
+
+  .phase-task-label {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--text-1);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .phase-task-desc {
+    font-size: 14px;
+    color: var(--text-3);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 800px) {
+    .phase-block { grid-template-columns: 1fr; gap: 24px; }
+    .phase-marker { position: static; }
+    .phase-content { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 32px; }
+    .phase-marker-num { font-size: 72px; }
+    .phase-content h3 { font-size: 30px; }
+  }
+
+  /* ============ MIDDLE QUOTE ============ */
+  .mid-quote {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--black);
+  }
+
+  .mid-quote-symbol {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 32px;
+    opacity: 0.5;
+  }
+
+  .mid-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.25;
+    font-style: italic;
+    color: var(--text-1);
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 var(--gutter);
+  }
+
+  .mid-quote-text .em {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .mid-quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .mid-quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+  /* ============ COMPATIBILITY ============ */
+  .compatibility {
+    padding: 140px 0;
+  }
+
+  .compatibility-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .compatibility-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin: 16px 0 32px;
+    letter-spacing: -0.015em;
+  }
+
+  .compatibility-content h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .compatibility-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--text-2);
+  }
+
+  .compatibility-principles {
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--black-2);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .compatibility-principles h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .compatibility-principles ul {
+    list-style: none;
+  }
+
+  .compatibility-principles li {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-1);
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .compatibility-principles li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 32px;
+    line-height: 1;
+    top: 6px;
+  }
+
+  .compatibility-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: var(--radius);
+    position: relative;
+  }
+
+  .compatibility-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) contrast(1.05) brightness(0.9);
+  }
+
+  @media (max-width: 900px) {
+    .compatibility-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ NETWORK ============ */
+  .network {
+    padding: 140px 0;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+  }
+
+  .network-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .network-header h2 {
+    margin: 16px auto;
+    max-width: 800px;
+  }
+
+  .network-header p {
+    max-width: 700px;
+    margin: 16px auto 0;
+  }
+
+  .network-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .network-card {
+    padding: 36px 32px;
+    border: 1px solid var(--line);
+    background: var(--black);
+    border-radius: var(--radius);
+    transition: all 0.4s ease;
+  }
+
+  .network-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .network-card-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .network-card-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-1);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .network-card-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-3);
+  }
+
+  @media (max-width: 800px) {
+    .network-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    padding: 160px 0;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 24px auto 32px;
+    max-width: 1000px;
+  }
+
+  .final-cta h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      TM Performance
+      <span class="brand-divider"></span>
+      <span class="brand-tag">Elite</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="methodologie.html" class="active">Méthodologie</a></li>
+      <li><a href="services.html">Accompagnement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Demander un entretien</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="methodologie.html">Méthodologie</a>
+  <a href="services.html">Accompagnement</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="page-header">
+  <div class="page-header-watermark">M</div>
+  <div class="container">
+    <div class="page-header-grid">
+      <div>
+        <div class="eyebrow reveal">Notre méthode · La direction de performance</div>
+        <h1 class="page-header-title reveal delay-1">
+          La <span class="it">méthode</span><br>
+          avant le talent
+        </h1>
+      </div>
+      <div class="reveal delay-2">
+        <p class="page-header-intro">
+          Une carrière de très haut niveau ne se compose pas par accident. Elle suit une architecture précise — diagnostic, plan, pilotage, évolution. Voici comment nous travaillons.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="philosophy">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-block scroll-reveal">
+        <h3>Une vision <span class="it">à 360°</span></h3>
+        <p>
+          La performance d'un footballeur professionnel ne se résume pas à la préparation physique. Elle est le produit de huit champs interdépendants : préparation, récupération, soins, blessures, données, technique, nutrition, sommeil. Une faiblesse dans l'un d'eux peut compromettre l'ensemble.
+        </p>
+        <p>
+          Notre rôle est de tenir cette cartographie complète, de l'actualiser en continu, et de coordonner chaque expert sur son domaine — pendant que vous restez concentré sur le terrain.
+        </p>
+      </div>
+      <div class="philosophy-block scroll-reveal">
+        <h3>Une vision <span class="it">long terme</span></h3>
+        <p>
+          Nous travaillons avec des athlètes qui pensent leur carrière en cinq, dix, quinze ans. Les choix que vous faites aujourd'hui — sur votre corps, votre environnement, votre nutrition, votre sommeil — déterminent où vous serez à 32 ans. À 35.
+        </p>
+        <p>
+          Chaque décision est prise dans cette perspective. Aucune optimisation court terme au détriment de la longévité. Aucun raccourci. La rigueur est le seul chemin vers la régularité de très haut niveau.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUR PHASES ============ -->
+<section class="phases">
+  <div class="container">
+    <div class="phases-header scroll-reveal">
+      <div class="eyebrow center">Architecture · Quatre temps</div>
+      <h2>L'<span class="italic gold">architecture</span> de notre travail</h2>
+      <p>Notre méthodologie suit un cycle structuré, reproductible, mais entièrement personnalisé à votre situation, votre contrat, vos objectifs et votre histoire physique.</p>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase-block scroll-reveal">
+      <div class="phase-marker">
+        <div class="phase-marker-num">i.</div>
+        <div class="phase-marker-label">Phase de diagnostic</div>
+      </div>
+      <div class="phase-content">
+        <h3>Diagnostic intégral</h3>
+        <p>
+          Tout commence par une cartographie complète de votre situation actuelle. Pas un audit superficiel — une lecture de fond qui prend le temps nécessaire pour comprendre votre corps, votre jeu, votre histoire physique, votre environnement, vos objectifs explicites et implicites.
+        </p>
+        <p>
+          C'est la phase la plus longue, et la plus importante. Aucune décision n'est prise avant qu'elle ne soit complète. Une décision sans diagnostic est un pari.
+        </p>
+        <div class="phase-tasks">
+          <div class="phase-task">
+            <div class="phase-task-marker">A.01</div>
+            <div>
+              <div class="phase-task-label">Bilan physique multidisciplinaire</div>
+              <div class="phase-task-desc">Tests de force, vitesse, mobilité, équilibre. Examen kiné &amp; ostéopathique. Posturologie.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">A.02</div>
+            <div>
+              <div class="phase-task-label">Lecture de l'historique de blessures</div>
+              <div class="phase-task-desc">Récidives, schémas, points faibles. Identification des risques structurels.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">A.03</div>
+            <div>
+              <div class="phase-task-label">Analyse vidéo &amp; data du jeu</div>
+              <div class="phase-task-desc">Profil technico-tactique selon le poste, comportements répétés, axes de progression.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">A.04</div>
+            <div>
+              <div class="phase-task-label">Audit nutrition, sommeil, environnement</div>
+              <div class="phase-task-desc">Habitudes alimentaires, qualité du sommeil, contraintes du quotidien (déplacements, famille, etc.).</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">A.05</div>
+            <div>
+              <div class="phase-task-label">Entretien sur les objectifs de carrière</div>
+              <div class="phase-task-desc">Vision long terme, ambitions, contraintes contractuelles, projets personnels. La performance sert un projet de vie, jamais l'inverse.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase-block scroll-reveal">
+      <div class="phase-marker">
+        <div class="phase-marker-num">ii.</div>
+        <div class="phase-marker-label">Phase d'architecture</div>
+      </div>
+      <div class="phase-content">
+        <h3>Architecture personnalisée</h3>
+        <p>
+          À partir du diagnostic, nous construisons votre architecture de performance. C'est un document vivant, structuré par saison, qui définit les objectifs de progression, les indicateurs de suivi, les jalons clés, les intervenants à mobiliser.
+        </p>
+        <p>
+          Si vous êtes sous contrat avec un club, votre architecture est conçue pour s'articuler en complément du staff existant — jamais contre lui. Nous travaillons à votre demande avec les intervenants déjà en place, en coordonnant l'ensemble sans remettre en cause leur expertise.
+        </p>
+        <div class="phase-tasks">
+          <div class="phase-task">
+            <div class="phase-task-marker">B.01</div>
+            <div>
+              <div class="phase-task-label">Plan saison annuel &amp; périodisation</div>
+              <div class="phase-task-desc">Charge attendue, périodes critiques (matchs européens, internationaux), fenêtres de récupération.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">B.02</div>
+            <div>
+              <div class="phase-task-label">Définition des indicateurs de suivi</div>
+              <div class="phase-task-desc">Données physiques (GPS, charge, sommeil), techniques (xG, duels, sprints) et physiologiques (sang, RPE).</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">B.03</div>
+            <div>
+              <div class="phase-task-label">Composition du staff externe</div>
+              <div class="phase-task-desc">Sélection des kiné, ostéo, prépa physique, prépa mentale, nutritionniste, chef. Chacun choisi pour sa connaissance avérée du très haut niveau.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">B.04</div>
+            <div>
+              <div class="phase-task-label">Coordination avec le staff club</div>
+              <div class="phase-task-desc">Points de contact, partage de données, complémentarité. Notre rôle n'est jamais d'imposer ; il est d'élargir.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">B.05</div>
+            <div>
+              <div class="phase-task-label">Validation et signature de l'architecture</div>
+              <div class="phase-task-desc">Document remis en main propre. C'est votre cadre de travail pour l'année. Il évoluera, mais jamais sans réflexion.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase-block scroll-reveal">
+      <div class="phase-marker">
+        <div class="phase-marker-num">iii.</div>
+        <div class="phase-marker-label">Phase de pilotage</div>
+      </div>
+      <div class="phase-content">
+        <h3>Pilotage continu</h3>
+        <p>
+          Le travail réel commence ici. Suivi hebdomadaire des données, ajustements, présence d'experts à vos côtés selon le calendrier convenu. Réactivité immédiate en cas d'alerte ou de blessure. Disponibilité directe par les canaux que vous préférez.
+        </p>
+        <p>
+          C'est aussi pendant cette phase que se joue ce qui distingue une bonne carrière d'une grande : la capacité à corriger très vite quand les indicateurs dérivent, sans attendre que la situation devienne critique.
+        </p>
+        <div class="phase-tasks">
+          <div class="phase-task">
+            <div class="phase-task-marker">C.01</div>
+            <div>
+              <div class="phase-task-label">Suivi hebdomadaire des indicateurs</div>
+              <div class="phase-task-desc">Lecture des données GPS, charge, sommeil, RPE. Détection précoce des signaux faibles.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">C.02</div>
+            <div>
+              <div class="phase-task-label">Visios bimensuelles avec direction</div>
+              <div class="phase-task-desc">Bilan, ajustements, projection. Discussion ouverte sur ce qui marche, ce qui doit changer.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">C.03</div>
+            <div>
+              <div class="phase-task-label">Interventions présentielles selon plan</div>
+              <div class="phase-task-desc">Prestataires sélectionnés (kiné, ostéo, prépa physique, etc.) interviennent selon le calendrier établi.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">C.04</div>
+            <div>
+              <div class="phase-task-label">Réactivité en cas d'alerte</div>
+              <div class="phase-task-desc">Indicateur dégradé, douleur, baisse de forme, blessure : protocole activé sous 24h. Un seul interlocuteur, toutes les ressources.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">C.05</div>
+            <div>
+              <div class="phase-task-label">Ajustements méthodologiques continus</div>
+              <div class="phase-task-desc">L'architecture évolue avec vous. Pas de plan figé. La méthode s'adapte à votre réalité, jamais l'inverse.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase-block scroll-reveal">
+      <div class="phase-marker">
+        <div class="phase-marker-num">iv.</div>
+        <div class="phase-marker-label">Phase d'évolution</div>
+      </div>
+      <div class="phase-content">
+        <h3>Évolution long terme</h3>
+        <p>
+          La performance se construit sur des années. Tous les trois mois, nous faisons le point. Tous les ans, nous redessinons. À chaque étape de carrière — transfert, changement de championnat, fin de contrat, transition — nous anticipons.
+        </p>
+        <p>
+          C'est dans cette phase que la valeur de notre travail devient pleinement visible. Pas dans la première année. Dans la cinquième. Dans la dixième.
+        </p>
+        <div class="phase-tasks">
+          <div class="phase-task">
+            <div class="phase-task-marker">D.01</div>
+            <div>
+              <div class="phase-task-label">Bilans trimestriels approfondis</div>
+              <div class="phase-task-desc">Rapport écrit, lecture des progrès, identification des nouveaux axes prioritaires.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">D.02</div>
+            <div>
+              <div class="phase-task-label">Bilan annuel &amp; redéfinition de l'architecture</div>
+              <div class="phase-task-desc">Refonte du plan en fonction de l'évolution physique, technique, contractuelle et personnelle.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">D.03</div>
+            <div>
+              <div class="phase-task-label">Anticipation des étapes de carrière</div>
+              <div class="phase-task-desc">Préparation aux transferts, adaptation à de nouveaux championnats, transitions de fin de carrière.</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">D.04</div>
+            <div>
+              <div class="phase-task-label">Accompagnement psychologique &amp; carrière</div>
+              <div class="phase-task-desc">Visualisation, gestion des moments clés (premiers pas pro, blessures, contrats, doutes, victoires).</div>
+            </div>
+          </div>
+          <div class="phase-task">
+            <div class="phase-task-marker">D.05</div>
+            <div>
+              <div class="phase-task-label">Construction d'un capital long terme</div>
+              <div class="phase-task-desc">Données, méthodologie, réseau d'experts : ce que nous bâtissons reste votre patrimoine. Pour toute votre carrière, et au-delà.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MIDDLE QUOTE ============ -->
+<section class="mid-quote">
+  <div class="container">
+    <div class="mid-quote-symbol scroll-reveal">"</div>
+    <p class="mid-quote-text scroll-reveal">
+      Excellence is not a singular act, but a habit. <span class="em">You are what you repeatedly do.</span>
+    </p>
+    <div class="mid-quote-author scroll-reveal">
+      <span class="name">Shaquille O'Neal</span> · 4× NBA Champion
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPATIBILITY ============ -->
+<section class="compatibility">
+  <div class="container">
+    <div class="compatibility-grid">
+      <div class="compatibility-content scroll-reveal">
+        <div class="eyebrow">Compatibilité club &amp; staff</div>
+        <h2>En <span class="it">complément</span>,<br>jamais contre</h2>
+        <p>
+          Si vous êtes sous contrat avec un club, votre staff actuel — préparateur physique, kiné, médecin, coach — fait son travail. Notre rôle n'est pas de le remettre en question. Il est d'apporter une coordination plus globale, plus continue, et plus personnelle que ce qu'un staff collectif peut offrir.
+        </p>
+        <p>
+          Concrètement, cela signifie travailler avec les intervenants que vous connaissez déjà, sans rupture. Construire avec eux, pas en parallèle. Apporter un cadre de réflexion long terme que les contraintes hebdomadaires d'un club ne permettent pas toujours.
+        </p>
+        <p>
+          Cette posture demande de la diplomatie. Elle demande aussi une vraie expertise, qui force le respect des praticiens en place. C'est la nôtre.
+        </p>
+
+        <div class="compatibility-principles">
+          <h4>Nos principes</h4>
+          <ul>
+            <li>Respect intégral du staff club existant</li>
+            <li>Coordination ouverte avec votre kiné, médecin, prépa physique habituels</li>
+            <li>Confidentialité totale sur les données et les échanges</li>
+            <li>Aucune ingérence dans les décisions sportives du club</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compatibility-image scroll-reveal">
+        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1200&q=80" alt="Staff multidisciplinaire">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NETWORK ============ -->
+<section class="network">
+  <div class="container">
+    <div class="network-header scroll-reveal">
+      <div class="eyebrow center">Notre réseau d'intervenants</div>
+      <h2>Un cercle <span class="italic gold">restreint</span></h2>
+      <p>Nous travaillons avec un nombre limité d'intervenants externes, choisis exclusivement pour trois critères : sérieux, professionnalisme, connaissance avérée du très haut niveau. Aucun compromis sur ce trio.</p>
+    </div>
+
+    <div class="network-grid">
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">i.</div>
+        <h3 class="network-card-title">Soins &amp; récupération</h3>
+        <p class="network-card-desc">Kinésithérapeutes du sport ayant exercé au niveau professionnel, ostéopathes spécialisés, posturologues. Connaissance fine de la physiologie du footballeur de haut niveau.</p>
+      </div>
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">ii.</div>
+        <h3 class="network-card-title">Préparation physique</h3>
+        <p class="network-card-desc">Préparateurs physiques diplômés, expérience de clubs professionnels en France et à l'étranger. Capables d'individualiser sans déstabiliser le travail collectif.</p>
+      </div>
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">iii.</div>
+        <h3 class="network-card-title">Préparation mentale</h3>
+        <p class="network-card-desc">Préparateurs mentaux issus du sport de haut niveau. Travail sur la visualisation, la gestion des moments clés, les transitions de carrière.</p>
+      </div>
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">iv.</div>
+        <h3 class="network-card-title">Nutrition &amp; chefs</h3>
+        <p class="network-card-desc">Nutritionnistes du sport, chefs privés sélectionnés pour leur capacité à conjuguer haute exigence sportive et plaisir. Vous mangez bien. Vous performez mieux.</p>
+      </div>
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">v.</div>
+        <h3 class="network-card-title">Data &amp; analyse</h3>
+        <p class="network-card-desc">Analystes performance issus de structures de haut niveau, capables de croiser données physiques (GPS, charge) et données techniques pour identifier les leviers d'amélioration.</p>
+      </div>
+      <div class="network-card scroll-reveal">
+        <div class="network-card-num">vi.</div>
+        <h3 class="network-card-title">Spécialistes du sommeil &amp; environnement</h3>
+        <p class="network-card-desc">Conseil en literie haute performance, gestion des décalages horaires, optimisation de l'environnement nocturne. Le sommeil est le premier facteur de récupération.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="eyebrow center no-line scroll-reveal">Prendre contact</div>
+    <h2 class="scroll-reveal">
+      Notre méthode commence par<br>
+      <span class="it">un seul échange.</span>
+    </h2>
+    <p class="scroll-reveal">
+      Un entretien initial, en présentiel ou en visio, pour comprendre votre situation et vérifier si notre approche correspond à vos attentes. Sans engagement.
+    </p>
+    <div class="scroll-reveal">
+      <a href="contact.html" class="btn btn-primary">Demander un entretien confidentiel</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>TM Performance <span class="italic gold">Elite</span></h3>
+        <p>Direction de la haute performance pour footballeurs d'élite. Expertise des grands clubs européens, méthodologie 360°, discrétion absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="services.html">Accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="services.html">Préparation physique</a></li>
+          <li><a href="services.html">Récupération &amp; soins</a></li>
+          <li><a href="services.html">Retour de blessure</a></li>
+          <li><a href="services.html">Pôle data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cabinet</h4>
+        <ul>
+          <li><a href="contact.html">Contact direct</a></li>
+          <li><a href="contact.html">Confidentialité</a></li>
+          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div>© 2026 TM Performance Elite — Tous droits réservés</div>
+      <div>Direction · Guillaume Testu</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
