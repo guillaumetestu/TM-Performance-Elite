@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ils nous font confiance — TM Performance Elite</title>
+<meta name="description" content="Témoignages de joueurs accompagnés par TM Performance Elite. Retours d'expérience, parcours, vidéos de travail.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ============ PAGE HEADER ============ */
+  .page-header {
+    padding: 200px 0 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header-watermark {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 380px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 100px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 24px 0;
+  }
+
+  .page-header-title .it {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .page-header-intro {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--text-2);
+    font-weight: 300;
+    padding-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .page-header-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ INTRO ============ */
+  .testimonials-intro {
+    padding: 100px 0 60px;
+  }
+
+  .testimonials-intro-text {
+    max-width: 780px;
+  }
+
+  .testimonials-intro-text p {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 24px;
+  }
+
+  .testimonials-intro-text p:first-child::first-letter {
+    font-family: var(--serif);
+    font-size: 80px;
+    float: left;
+    line-height: 0.85;
+    padding-right: 12px;
+    padding-top: 6px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ============ FEATURED TESTIMONIAL ============ */
+  .featured-testimonial {
+    padding: 80px 0 140px;
+  }
+
+  .featured-card {
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .featured-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* Video side */
+  .featured-video {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  .featured-video iframe,
+  .featured-video video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Placeholder while no video uploaded */
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(10, 9, 8, 0.85), rgba(10, 9, 8, 0.7)),
+      url('https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1600&q=80') center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    cursor: default;
+  }
+
+  .video-placeholder-icon {
+    width: 88px;
+    height: 88px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: all 0.4s ease;
+  }
+
+  .video-placeholder-icon::after {
+    content: '';
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent var(--gold);
+    margin-left: 6px;
+  }
+
+  .video-placeholder:hover .video-placeholder-icon {
+    background: var(--gold);
+    transform: scale(1.05);
+  }
+
+  .video-placeholder:hover .video-placeholder-icon::after {
+    border-color: transparent transparent transparent var(--black);
+  }
+
+  .video-placeholder-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .video-placeholder-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-2);
+  }
+
+  /* Content side */
+  .featured-content {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .featured-meta-top {
+    margin-bottom: 32px;
+  }
+
+  .featured-quote-symbol {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 24px;
+    opacity: 0.4;
+  }
+
+  .featured-quote {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--text-1);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .featured-quote .em {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .featured-attribution {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+
+  .featured-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-1);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .featured-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .featured-context {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-3);
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-content { padding: 40px 28px; }
+  }
+
+  /* ============ OTHER TESTIMONIALS ============ */
+  .other-testimonials {
+    padding: 100px 0 60px;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .other-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .other-header h2 {
+    margin: 16px auto;
+    max-width: 800px;
+  }
+
+  .other-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .other-card {
+    background: var(--black);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .other-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .other-card.placeholder {
+    background: transparent;
+    border: 1px dashed var(--line-2);
+  }
+
+  .other-card.placeholder:hover {
+    border-color: var(--gold);
+    border-style: dashed;
+    transform: none;
+  }
+
+  .other-card-media {
+    aspect-ratio: 16/10;
+    background: var(--black-3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .other-card.placeholder .other-card-media {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 12px,
+        rgba(201, 161, 74, 0.04) 12px,
+        rgba(201, 161, 74, 0.04) 24px
+      );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .other-card-placeholder-symbol {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+
+  .other-card-content {
+    padding: 32px;
+  }
+
+  .other-card-quote {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-1);
+    font-style: italic;
+    margin-bottom: 24px;
+    min-height: 80px;
+  }
+
+  .other-card.placeholder .other-card-quote {
+    color: var(--text-3);
+    font-style: italic;
+  }
+
+  .other-card-attribution {
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .other-card-name {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-1);
+    margin-bottom: 4px;
+  }
+
+  .other-card.placeholder .other-card-name {
+    color: var(--text-3);
+    font-style: italic;
+  }
+
+  .other-card-role {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  @media (max-width: 800px) {
+    .other-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ MID QUOTE ============ */
+  .mid-quote {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--black);
+  }
+
+  .mid-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.25;
+    font-style: italic;
+    color: var(--text-1);
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 var(--gutter);
+  }
+
+  .mid-quote-text .em {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .mid-quote-author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .mid-quote-author .name {
+    color: var(--text-1);
+    margin-right: 12px;
+  }
+
+  /* ============ TRUST INDICATORS ============ */
+  .trust {
+    padding: 140px 0;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .trust-item {
+    padding: 40px 20px;
+    border-left: 1px solid var(--line);
+  }
+
+  .trust-item:first-child { border-left: none; }
+
+  .trust-num {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .trust-label {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--text-1);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .trust-desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  @media (max-width: 800px) {
+    .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+    .trust-item { border-left: none; border-top: 1px solid var(--line); padding: 32px 20px; }
+    .trust-item:first-child { border-top: none; }
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--black-2);
+    border-top: 1px solid var(--line);
+  }
+
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 24px auto 32px;
+    max-width: 1000px;
+  }
+
+  .final-cta h2 .it {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      TM Performance
+      <span class="brand-divider"></span>
+      <span class="brand-tag">Elite</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="methodologie.html">Méthodologie</a></li>
+      <li><a href="services.html">Accompagnement</a></li>
+      <li><a href="temoignages.html" class="active">Témoignages</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Demander un entretien</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="methodologie.html">Méthodologie</a>
+  <a href="services.html">Accompagnement</a>
+  <a href="temoignages.html">Témoignages</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="page-header">
+  <div class="page-header-watermark">T</div>
+  <div class="container">
+    <div class="page-header-grid">
+      <div>
+        <div class="eyebrow reveal">Témoignages · Retours d'expérience</div>
+        <h1 class="page-header-title reveal delay-1">
+          Ils nous<br>
+          <span class="it">font confiance</span>
+        </h1>
+      </div>
+      <div class="reveal delay-2">
+        <p class="page-header-intro">
+          Des joueurs de très haut niveau ont choisi de structurer leur performance avec nous. Voici leurs parcours et ce que notre travail a apporté à leur carrière.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="testimonials-intro">
+  <div class="container">
+    <div class="testimonials-intro-text scroll-reveal">
+      <div class="eyebrow">Notre approche du témoignage</div>
+      <p style="margin-top: 24px;">
+        Nous publions un nombre restreint de témoignages, choisis avec les joueurs eux-mêmes, et après plusieurs années de collaboration. Pas de communication promotionnelle, pas de citations sorties de leur contexte. Chaque retour d'expérience est un travail de fond, validé en commun, partagé avec sobriété.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED — MARTIN TERRIER ============ -->
+<section class="featured-testimonial">
+  <div class="container">
+    <div class="featured-card scroll-reveal">
+      <div class="featured-grid">
+
+        <!-- VIDEO ZONE -->
+        <div class="featured-video">
+          <!--
+            ============ ZONE VIDÉO ============
+            Pour intégrer la vidéo, remplace le bloc ci-dessous par :
+
+            Si vidéo YouTube :
+            <iframe src="https://www.youtube.com/embed/XXXXXX" allowfullscreen></iframe>
+
+            Si vidéo Vimeo :
+            <iframe src="https://player.vimeo.com/video/XXXXXX" allowfullscreen></iframe>
+
+            Si fichier vidéo direct (à mettre dans assets/videos/) :
+            <video controls poster="assets/images/martin-terrier-poster.jpg">
+              <source src="assets/videos/martin-terrier.mp4" type="video/mp4">
+            </video>
+          -->
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon"></div>
+            <div class="video-placeholder-label">Vidéo à intégrer</div>
+            <div class="video-placeholder-text">Travail avec Martin Terrier</div>
+          </div>
+        </div>
+
+        <!-- CONTENT ZONE -->
+        <div class="featured-content">
+          <div class="featured-meta-top">
+            <div class="eyebrow">Témoignage · Joueur professionnel</div>
+            <div class="featured-quote-symbol">"</div>
+          </div>
+
+          <p class="featured-quote">
+            <!-- ============ TEXTE TÉMOIGNAGE ============ -->
+            <!-- Remplace ce texte par le témoignage exact de Martin Terrier -->
+            Témoignage à intégrer. <span class="em">Le retour d'expérience de Martin Terrier sur notre travail commun</span> sera publié ici dès qu'il sera finalisé en accord avec lui.
+          </p>
+
+          <div class="featured-attribution">
+            <div class="featured-name">Martin Terrier</div>
+            <div class="featured-role">Attaquant · Ligue 1</div>
+            <p class="featured-context">
+              Accompagnement performance individualisé · Travail de fond sur la préparation physique, le retour de blessure et la régularité de très haut niveau.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MID QUOTE ============ -->
+<section class="mid-quote">
+  <div class="container">
+    <p class="mid-quote-text scroll-reveal">
+      Talent wins games, but teamwork and intelligence <span class="em">win championships.</span>
+    </p>
+    <div class="mid-quote-author scroll-reveal">
+      <span class="name">Michael Jordan</span> · 6× NBA Champion
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER TESTIMONIALS — placeholders ============ -->
+<section class="other-testimonials">
+  <div class="container">
+    <div class="other-header scroll-reveal">
+      <div class="eyebrow center">D'autres parcours</div>
+      <h2>Des collaborations <span class="italic gold">en cours</span></h2>
+      <p style="max-width: 640px; margin: 16px auto 0;">D'autres témoignages seront publiés progressivement, en accord avec les joueurs accompagnés. Discrétion d'abord, communication ensuite.</p>
+    </div>
+
+    <div class="other-grid">
+
+      <!-- ============ EMPLACEMENT FUTUR JOUEUR 2 ============ -->
+      <div class="other-card placeholder scroll-reveal">
+        <div class="other-card-media">
+          <div class="other-card-placeholder-symbol">ii.</div>
+        </div>
+        <div class="other-card-content">
+          <p class="other-card-quote">Témoignage à venir.</p>
+          <div class="other-card-attribution">
+            <div class="other-card-name">Joueur professionnel</div>
+            <div class="other-card-role">Top 5 européen</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ EMPLACEMENT FUTUR JOUEUR 3 ============ -->
+      <div class="other-card placeholder scroll-reveal">
+        <div class="other-card-media">
+          <div class="other-card-placeholder-symbol">iii.</div>
+        </div>
+        <div class="other-card-content">
+          <p class="other-card-quote">Témoignage à venir.</p>
+          <div class="other-card-attribution">
+            <div class="other-card-name">Joueur professionnel</div>
+            <div class="other-card-role">Top 5 européen</div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+        ============ MODÈLE POUR FUTUR TÉMOIGNAGE ============
+        Pour ajouter un nouveau joueur, remplace une carte placeholder par :
+
+        <div class="other-card scroll-reveal">
+          <div class="other-card-media">
+            <img src="assets/images/joueur-nom.jpg" alt="..." style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="other-card-content">
+            <p class="other-card-quote">"Citation du joueur, idéalement entre 1 et 3 phrases."</p>
+            <div class="other-card-attribution">
+              <div class="other-card-name">Prénom Nom</div>
+              <div class="other-card-role">Poste · Club</div>
+            </div>
+          </div>
+        </div>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST INDICATORS ============ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item scroll-reveal">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Années dans le<br>football professionnel</div>
+        <div class="trust-desc">Direction performance</div>
+      </div>
+      <div class="trust-item scroll-reveal">
+        <div class="trust-num">L1</div>
+        <div class="trust-label">Performance Director<br>Stade Rennais (2021-2023)</div>
+        <div class="trust-desc">Ligue 1</div>
+      </div>
+      <div class="trust-item scroll-reveal">
+        <div class="trust-num">UEFA A</div>
+        <div class="trust-label">Licence d'entraîneur<br>professionnel</div>
+        <div class="trust-desc">Diplôme reconnu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="eyebrow center no-line scroll-reveal">Prochaine étape</div>
+    <h2 class="scroll-reveal">
+      Le prochain témoignage,<br>
+      ce sera peut-être <span class="it">le vôtre.</span>
+    </h2>
+    <p class="scroll-reveal">
+      Nous travaillons avec un nombre limité d'athlètes. Si vous partagez notre vision long terme et notre exigence méthodologique, prenons contact.
+    </p>
+    <div class="scroll-reveal">
+      <a href="contact.html" class="btn btn-primary">Demander un entretien confidentiel</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>TM Performance <span class="italic gold">Elite</span></h3>
+        <p>Direction de la haute performance pour footballeurs d'élite. Expertise des grands clubs européens, méthodologie 360°, discrétion absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="services.html">Accompagnement</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="services.html">Préparation physique</a></li>
+          <li><a href="services.html">Récupération &amp; soins</a></li>
+          <li><a href="services.html">Retour de blessure</a></li>
+          <li><a href="services.html">Pôle data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cabinet</h4>
+        <ul>
+          <li><a href="contact.html">Contact direct</a></li>
+          <li><a href="contact.html">Confidentialité</a></li>
+          <li><a href="mailto:contact@tm-performance.com">contact@tm-performance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div>© 2026 TM Performance Elite — Tous droits réservés</div>
+      <div>Direction · Guillaume Testu</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
